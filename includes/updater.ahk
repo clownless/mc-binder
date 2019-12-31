@@ -37,40 +37,40 @@ WM_HELP(){
     desupd := Utf8ToAnsi(desupd)
     IniRead, updupd, %a_temp%/version.ini, UPD, upd
     updupd := Utf8ToAnsi(updupd)
-    msgbox, , Список изменений версии %vupd%, %updupd%
+    msgbox, , РЎРїРёСЃРѕРє РёР·РјРµРЅРµРЅРёР№ РІРµСЂСЃРёРё %vupd%, %updupd%
     return
 }
 
 OnMessage(0x53, "WM_HELP")
 Gui +OwnDialogs
 
-SplashTextOn, , 60,Автообновление, Запуск скрипта. Ожидайте..`nПроверяем наличие обновлений.
+SplashTextOn, , 60,РђРІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ, Р—Р°РїСѓСЃРє СЃРєСЂРёРїС‚Р°. РћР¶РёРґР°Р№С‚Рµ..`nРџСЂРѕРІРµСЂСЏРµРј РЅР°Р»РёС‡РёРµ РѕР±РЅРѕРІР»РµРЅРёР№.
 URLDownloadToFile, %downllen%, %a_temp%/version.ini
 IniRead, buildupd, %a_temp%/version.ini, UPD, build
 if buildupd =
 {
-    SplashTextOn, , 60,Автообновление, Запуск скрипта. Ожидайте..`nОшибка. Нет связи с сервером.
+    SplashTextOn, , 60,РђРІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ, Р—Р°РїСѓСЃРє СЃРєСЂРёРїС‚Р°. РћР¶РёРґР°Р№С‚Рµ..`nРћС€РёР±РєР°. РќРµС‚ СЃРІСЏР·Рё СЃ СЃРµСЂРІРµСЂРѕРј.
     sleep, 2000
 }
 if buildupd > % buildscr
 {
     IniRead, vupd, %a_temp%/version.ini, UPD, v
-    SplashTextOn, , 60,Автообновление, Запуск скрипта. Ожидайте..`nОбнаружено обновление до версии %vupd%!
+    SplashTextOn, , 60,РђРІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ, Р—Р°РїСѓСЃРє СЃРєСЂРёРїС‚Р°. РћР¶РёРґР°Р№С‚Рµ..`nРћР±РЅР°СЂСѓР¶РµРЅРѕ РѕР±РЅРѕРІР»РµРЅРёРµ РґРѕ РІРµСЂСЃРёРё %vupd%!
     sleep, 2000
     IniRead, desupd, %a_temp%/version.ini, UPD, des
     desupd := Utf8ToAnsi(desupd)
     IniRead, updupd, %a_temp%/version.ini, UPD, upd
     updupd := Utf8ToAnsi(updupd)
     SplashTextoff
-    msgbox, 16384, Обновление скрипта до версии %vupd%, %desupd%
+    msgbox, 16384, РћР±РЅРѕРІР»РµРЅРёРµ СЃРєСЂРёРїС‚Р° РґРѕ РІРµСЂСЃРёРё %vupd%, %desupd%
     IfMsgBox OK
     {
-        msgbox, 1, Обновление скрипта до версии %vupd%, Хотите ли Вы обновиться?
+        msgbox, 1, РћР±РЅРѕРІР»РµРЅРёРµ СЃРєСЂРёРїС‚Р° РґРѕ РІРµСЂСЃРёРё %vupd%, РҐРѕС‚РёС‚Рµ Р»Рё Р’С‹ РѕР±РЅРѕРІРёС‚СЊСЃСЏ?
         IfMsgBox OK
         {
             put2 := % A_ScriptFullPath
             RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\mcbind ,put2 , % put2
-            SplashTextOn, , 60,Автообновление, Обновление. Ожидайте..`nОбновляем скрипт до версии %vupd%!
+            SplashTextOn, , 60,РђРІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ, РћР±РЅРѕРІР»РµРЅРёРµ. РћР¶РёРґР°Р№С‚Рµ..`nРћР±РЅРѕРІР»СЏРµРј СЃРєСЂРёРїС‚ РґРѕ РІРµСЂСЃРёРё %vupd%!
             FileDelete, mcbind.exe
             URLDownloadToFile, %downlurl%, mcbind_v%downloadbl%.exe
             sleep, 1000

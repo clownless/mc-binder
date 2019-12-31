@@ -1,4 +1,4 @@
-﻿#NoEnv
+#NoEnv
 #SingleInstance force
 buildscr := 4
 #Include includes/updater.ahk
