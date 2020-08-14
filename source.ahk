@@ -1,19 +1,18 @@
 #NoEnv
 #SingleInstance force
-buildscr := 4
-#Include includes/updater.ahk
 SendMode Input
 SetTitleMatchMode, RegEx
 
-script = MC BINDER for Minecraft
-author = m4x3r1337 
+global script = "MC Binder"
+global author = "m4x3r1337"
+global version = "v1.0" 
 
 Menu,Tray,NoStandard 
 Menu,Tray,DeleteAll
 Menu,Tray,Icon,Shell32.dll,174
-Menu,Tray,Add,Р’С‹С…РѕРґ,MExit
+Menu,Tray,Add,Показать настройки,MShow
 Menu,Tray,Add,
-Menu,Tray,Add,РџРѕРєР°Р·Р°С‚СЊ РЅР°СЃС‚СЂРѕР№РєРё,MShow
+Menu,Tray,Add,Выход,MExit
 
 ButtonLoadConfig()
 {
@@ -30,12 +29,12 @@ ButtonLoadConfig()
 	Hotkey, % Key5, KKey5, Off, UseErrorLevel
 	IniRead, Key6, config.ini, MineBind, Key6, ^6
 	Hotkey, % Key6, KKey6, Off, UseErrorLevel
-	IniRead, Bind1, config.ini, MineBind, Bind1, Р‘РёРЅРґ
-	IniRead, Bind2, config.ini, MineBind, Bind2, Р‘РёРЅРґ
-	IniRead, Bind3, config.ini, MineBind, Bind3, Р‘РёРЅРґ
-	IniRead, Bind4, config.ini, MineBind, Bind4, Р‘РёРЅРґ
-	IniRead, Bind5, config.ini, MineBind, Bind5, Р‘РёРЅРґ
-	IniRead, Bind6, config.ini, MineBind, Bind6, Р‘РёРЅРґ
+	IniRead, Bind1, config.ini, MineBind, Bind1, Бинд
+	IniRead, Bind2, config.ini, MineBind, Bind2, Бинд
+	IniRead, Bind3, config.ini, MineBind, Bind3, Бинд
+	IniRead, Bind4, config.ini, MineBind, Bind4, Бинд
+	IniRead, Bind5, config.ini, MineBind, Bind5, Бинд
+	IniRead, Bind6, config.ini, MineBind, Bind6, Бинд
 	Gosub, Save
 	Hotkey, % Key1, KKey1, On, UseErrorLevel
 	Hotkey, % Key2, KKey2, On, UseErrorLevel
@@ -55,18 +54,18 @@ LoadConfig()
 	Hotkey, % Key2, KKey2, On, UseErrorLevel
 	IniRead, Key3, config.ini, MineBind, Key3, ^3
 	Hotkey, % Key3, KKey3, On, UseErrorLevel
-	IniRead, Key4, config.ini, MineBind, Key4, ^3
+	IniRead, Key4, config.ini, MineBind, Key4, ^4
 	Hotkey, % Key4, KKey4, On, UseErrorLevel
-	IniRead, Key5, config.ini, MineBind, Key5, ^3
+	IniRead, Key5, config.ini, MineBind, Key5, ^5
 	Hotkey, % Key5, KKey5, On, UseErrorLevel
-	IniRead, Key6, config.ini, MineBind, Key6, ^3
+	IniRead, Key6, config.ini, MineBind, Key6, ^6
 	Hotkey, % Key6, KKey6, On, UseErrorLevel
-	IniRead, Bind1, config.ini, MineBind, Bind1, Р‘РёРЅРґ
-	IniRead, Bind2, config.ini, MineBind, Bind2, Р‘РёРЅРґ
-	IniRead, Bind3, config.ini, MineBind, Bind3, Р‘РёРЅРґ
-	IniRead, Bind4, config.ini, MineBind, Bind4, Р‘РёРЅРґ
-	IniRead, Bind5, config.ini, MineBind, Bind5, Р‘РёРЅРґ
-	IniRead, Bind6, config.ini, MineBind, Bind6, Р‘РёРЅРґ
+	IniRead, Bind1, config.ini, MineBind, Bind1, Бинд
+	IniRead, Bind2, config.ini, MineBind, Bind2, Бинд
+	IniRead, Bind3, config.ini, MineBind, Bind3, Бинд
+	IniRead, Bind4, config.ini, MineBind, Bind4, Бинд
+	IniRead, Bind5, config.ini, MineBind, Bind5, Бинд
+	IniRead, Bind6, config.ini, MineBind, Bind6, Бинд
 }
 
 Save()
@@ -114,7 +113,7 @@ Gui,Add,Hotkey,x20 y230 w120 h21 vKey6,%Key6%
 Gui,Add,Edit,x160 y230 w300 h21 vBind6,%Bind6%
 Gui,Add,Button,x200 y280 w43 h23 gLoad,load
 Gui,Add,Button,x270 y280 w43 h23 gSave,save
-Gui,Show,w500 h326,%script% %buildscr% by %author%
+Gui,Show,w500 h326,%script% %version% by %author%
 return
 
 Save:
@@ -160,7 +159,7 @@ KKey6:
 GuiClose:
 {
 	Save()
-	TrayTip, %script% %buildscr% by %author%, Р‘РёРЅРґРµСЂ СЃРІРµСЂРЅСѓС‚ РІ С‚СЂРµР№. РџРљРњ РїРѕ Р·РЅР°С‡РєСѓ С‡С‚РѕР±С‹ РѕС‚РєСЂС‹С‚СЊ РµРіРѕ.
+	TrayTip, %script% %version% by %author%, Биндер свернут в трей. ПКМ по значку чтобы открыть его.
 	Gui, Hide
 	return
 }
